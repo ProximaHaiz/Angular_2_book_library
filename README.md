@@ -1,4 +1,4 @@
-# Angular 2 Weather progect
+# Angular 2 bool library
 
 ## Prerequisites
 
