@@ -13,12 +13,17 @@ export class ContentComponent{
     
     constructor(){
         this.categories = [
-            'Насосы','Клапаны','Распределители',
+            'Nasosy','Клапаны','Распределители',
             'Гидромоторы','Гидростанции','Фильтры',
             'Пневматика'];
             
             this.names = [
-                'Vova','Max','Lesha'
+                'Vova','Max','Lesha',
+                 'Vova','Max','Lesha',
+                 'Vova','Max','Lesha',
+                  'Vova','Max','Lesha',
+                   'Vova','Max','Lesha',
+                    'Vova','Max','Lesha'
             ];
             
     

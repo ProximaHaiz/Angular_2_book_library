@@ -1,7 +1,12 @@
 .list-space{
-    
+     font-size: 20px;
 }
 .list-space li {
     padding-bottom:10px; 
     background: lightgrey;
+    font-size: 25px;
+}
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,300,700);
+body,li,h1,h2,h3,h4,h5,h6,a,p{
+    font-family: 'Oswald', sans-serif;
 }

@@ -20,7 +20,7 @@ directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES]
     }
 )
  export class RegistrationFormComponent implements OnInit{
-        loginForm: ControlGroup;
+        registerForm: ControlGroup;
         public pageTitle: string;
         
         formError: { [id: string]: string };
@@ -34,16 +34,16 @@ directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES]
             this.formError = {
             'email': '',
             'password': '',
-            'reset_password':''
+            'repeat_password':''
         };
         this.registerContact = new RegistrationContact();
         
-        this.loginForm = _fb.group({
+        this.registerForm = _fb.group({
             email: new Control(this.registerContact.email,
                     Validators.compose([Validators.required, Validators.minLength(4)])),
-            password:new Control(this.registerContact.password,
+            password: new Control(this.registerContact.password,
                     Validators.compose([Validators.required, Validators.minLength(8)])),
-             reset_password:new Control(this.registerContact.reset_password,
+             repeat_password: new Control(this.registerContact.repeat_password,
                     Validators.compose([Validators.required, Validators.minLength(8)]))
         });
         
@@ -58,13 +58,13 @@ directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES]
                 'minlength': 'Password must be at least 8 characters.',
                 'maxlength': 'Password cannot exceed 50 characters.'
             },
-            'reset-password': {
+            'repeat_password': {
                 'required': 'Password is required',
                 'notequal': 'Password must be equal to password',
             }
         };
         
-         this.loginForm.valueChanges
+         this.registerForm.valueChanges
                 .debounceTime(200)
                 .subscribe(data => this.onValueChanged(data));
     }  
@@ -75,12 +75,12 @@ directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES]
     onValueChanged(data: any) {
         for (let field in this.formError) {
             if (this.formError.hasOwnProperty(field)) {
-                let hasError = this.loginForm.controls[field].dirty &&
-                    !this.loginForm.controls[field].valid;
+                let hasError = this.registerForm.controls[field].dirty &&
+                    !this.registerForm.controls[field].valid;
                 this.formError[field] = '';
                 if (hasError) {
-                    for (let key in this.loginForm.controls[field].errors) {
-                        if (this.loginForm.controls[field].errors.hasOwnProperty(key)) {
+                    for (let key in this.registerForm.controls[field].errors) {
+                        if (this.registerForm.controls[field].errors.hasOwnProperty(key)) {
                             this.formError[field] += this._validationMessages[field][key] + ' ';
                         }
                     }
@@ -96,8 +96,8 @@ directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES]
     }
     
     login(){
-        console.log(this.loginForm.value);
-        this._contactService.loginUser(this.loginForm.value)
+        console.log(this.registerForm.value);
+        this._contactService.loginUser(this.registerForm.value)
         .subscribe(data =>{
             console.log('loginForm have been send');
         });

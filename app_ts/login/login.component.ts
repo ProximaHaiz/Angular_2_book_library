@@ -23,9 +23,6 @@ directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES]
         loginForm: ControlGroup;
         public pageTitle: string;
         
-        test:string[]=[
-            'one','two','three'
-        ]
         
         formError: { [id: string]: string };
         private _validationMessages: { [id: string]: { [id: string]: string } };

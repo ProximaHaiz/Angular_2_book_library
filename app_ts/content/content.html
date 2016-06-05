@@ -14,7 +14,7 @@
       
     </ul>
   <div class="form-group">
-    <input class="form-control input-lg " id="inputlg" type="text"
+    <input class="form-control input-md " id="inputlg" type="text"
     placeholder="Search...">
   </div>
   
@@ -25,7 +25,7 @@
 <div class="spaces">
 <ul class="nav nav-pills nav-stacked col-md-2 ">
   <li class="list-space"><a href="#"
-  *ngFor="let catygory of categories ">{{catygory}}</a></li>
+  *ngFor="let catygory of categories "><h4>{{catygory}}</h4></a></li>
  
 </ul>
 </div>
@@ -33,10 +33,12 @@
 
 <div class="row">
   <div class="col-sm-9">
-    <table>
-      <tr>
-            <td class="col-sm-3" *ngFor="let name of names">
-                <div class="thumbnail">
+    
+    <ul class="list-inline" >
+        <li class="col-sm-3" *ngFor="let name of names">
+          <div class="link">
+          <a class="link" href=#>
+          <div class="thumbnail">
                   <img src="src/images/Vova.png" alt="...">
                     <div class="caption">
                       <h3>{{name}}</h3>
@@ -45,9 +47,10 @@
             
                     </div>
                 </div>
-          </td>  
-      </tr> 
-    </table>
+                </a>
+                </div>
+          </li>
+      </ul>
   
   </div>
 </div>

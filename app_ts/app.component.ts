@@ -38,9 +38,9 @@ import {RegistrationFormComponent} from './registration/registration.component'
         
     
 
-<footer class="footer navbar-fixed-bottom">
+<footer class="footer navbar">
      <div class="container">
-     <p class="text-muted center">Developed by Karpov Vladimir, 2016 </p>
+     <p class="text-muted text-center">Developed by Karpov Vladimir, 2016 </p>
      </div>
 </footer>
     
