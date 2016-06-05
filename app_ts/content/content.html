@@ -1,0 +1,53 @@
+<div class="header spaces">
+ <div class="col-sm-4">
+   <p>(044) 537-02-22, (044) 503-80-80</p>
+    <p>(044) 537-02-22, (044) 503-80-80</p>
+   </div>
+
+<div class="col-sm-4">
+  <ul class="list-inline">
+        <li><a href="">Категории</a></li>  
+        <li><a href="">Телефон</a></li>  
+        <li><a href="">Мобилка</a></li>  
+        <li><a href="">Контакты</a></li>  
+        
+      
+    </ul>
+  <div class="form-group">
+    <input class="form-control input-lg " id="inputlg" type="text"
+    placeholder="Search...">
+  </div>
+  
+  </div>
+</div>
+<hr>
+
+<div class="spaces">
+<ul class="nav nav-pills nav-stacked col-md-2 ">
+  <li class="list-space"><a href="#"
+  *ngFor="let catygory of categories ">{{catygory}}</a></li>
+ 
+</ul>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-9">
+    <table>
+      <tr>
+            <td class="col-sm-3" *ngFor="let name of names">
+                <div class="thumbnail">
+                  <img src="src/images/Vova.png" alt="...">
+                    <div class="caption">
+                      <h3>{{name}}</h3>
+                      <p>номинальное давление Рном : 10 МПа (100 кгс/см2)
+номинальная подача Qном : 10 л/мин</p>
+            
+                    </div>
+                </div>
+          </td>  
+      </tr> 
+    </table>
+  
+  </div>
+</div>

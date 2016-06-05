@@ -1,0 +1,32 @@
+.form-signin{
+  margin-top:10%;
+  /*margin: auto;*/
+  margin-left:37%;
+  margin-right: 37%; 
+  padding: 15px;
+  /*width: 340px;*/
+  height:auto; 
+  border-radius: 12px;
+  border: 1px solid #e8e8e8;
+  /*background: lightgray ; */
+  box-shadow: 0 1px 0 rgba(0,0,0,.35);
+}
+
+.form-signin h2{
+    text-align: center;
+}
+
+
+
+.form-signin .button-group{
+  
+  
+}
+.form-signin .button-group button{    
+    width: 49%;
+    float: right;
+}
+.form-signin .button-group a{    
+    width: 49%;
+    float:left;
+}
