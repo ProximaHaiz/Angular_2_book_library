@@ -2,6 +2,8 @@
 body,li,h1,h2,h3,h4,h5,h6,a,p{
     font-family: 'Oswald', sans-serif;
 }
+
+
 .header{
     margin-top: 60px;
     height: 100px;
@@ -13,10 +15,7 @@ body,li,h1,h2,h3,h4,h5,h6,a,p{
     padding-right: 25px;
 }
 
-.footer{
-    height: 250px;
-    background: lightgrey;
-}
+
 
 .thumbnail{
     
@@ -31,6 +30,21 @@ body,li,h1,h2,h3,h4,h5,h6,a,p{
     text-decoration: none;
     background: red;
 }
+
+
+
+.navbar-fixed-bottom{
+     background: lightgrey;
+}
+
+.navbar-height{
+    height: 40px;
+} 
+
+.navbar{
+     height: 40px;
+}
+
 
 
 

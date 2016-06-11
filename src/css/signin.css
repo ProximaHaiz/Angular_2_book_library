@@ -5,6 +5,7 @@
   margin-right: 37%; 
   padding: 15px;
   /*width: 340px;*/
+  max-width: 340px;
   height:auto; 
   border-radius: 12px;
   border: 1px solid #e8e8e8;
@@ -21,7 +22,7 @@
 
 
 .form-signin .button-group{
-  
+  padding-bottom: 30px;
   
 }
 .form-signin .button-group button{    

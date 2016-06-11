@@ -1,12 +1,87 @@
 .list-space{
-     font-size: 20px;
+    font-size: 20px;
+    /*padding-bottom:10px; */
+    /*background: lightskyblue;*/
+    border-top: 1px solid #fff;
+     border: 1px solid cornflowerblue;
+     border-radius: 5px;
 }
-.list-space li {
-    padding-bottom:10px; 
-    background: lightgrey;
-    font-size: 25px;
+.list-space :hover {
+    /*background: lightskyblue;*/
+    /*border: 1px solid blue;*/
+    border-radius: 5px;
+   
 }
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,300,700);
 body,li,h1,h2,h3,h4,h5,h6,a,p{
     font-family: 'Oswald', sans-serif;
 }
+
+.thumbnail{
+    width: 190px;
+}
+
+
+.dropdown-submenu{
+  position:relative;
+  }
+  .dropdown-menu{
+ 
+  /*box-shadow: 0 0 0 0; */
+  /*border: none;*/
+  }
+.dropdown-submenu>.dropdown-menu{
+ 
+  /*box-shadow: 0 0 0 0; */
+  font-size: 20px;
+  top:0;
+  left:100%;
+  margin-top:-6px;
+  margin-left:-1px;
+  /*-webkit-border-radius:0 6px 6px 6px;*/
+  /*-moz-border-radius:0 6px 6px 6px;*/
+  /*border-radius:0 6px 6px 6px;*/
+  }
+.dropdown-submenu:hover>.dropdown-menu{
+  display:block;
+  }
+.dropdown-submenu>a:after{
+  display:block;
+  content:" ";
+  float:right;
+  width:0;
+  height:0;
+  border-color:transparent;
+  border-style:solid;
+  border-width:5px 0 5px 5px;
+  /*border-left-color:#cccccc;*/
+  margin-top:5px;
+  margin-right:-10px;}
+.dropdown-submenu:hover>a:after{
+  /*border-left-color:#ffffff;*/
+  }
+.dropdown-submenu{
+
+}
+
+
+.dropdown-submenu>.dropdown-menu{
+    
+/*left:-100%;*/
+margin-right:10px;
+-webkit-border-radius:6px 0 6px 6px;
+-moz-border-radius:6px 0 6px 6px;
+border-radius:6px 0 6px 6px;
+}
+.sidebar{
+  }
+  
+ .sidebar li{
+font-size: 20px;
+/*border: 1px solid grey;*/
+margin-bottom: 5px;
+ }
+
+
+
+
