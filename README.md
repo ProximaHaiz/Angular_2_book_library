@@ -1,4 +1,4 @@
-# Angular 2 bool library
+# Angular 2 book library
 
 ## Prerequisites
 
