@@ -22,47 +22,25 @@ directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES]
 )
  export class RegistrationFormComponent implements OnInit{
         registerForm: ControlGroup;
-        private pageTitle: string = '';
-        passwordControl :Control;
+       private pageTitle: string = '';
+         passwordControl :Control;
         
-        // formError: { [id: string]: string };
-        formError: { [id: string]: { [id: string]: string }};
-        myFormError: { [id: string]: { [id: string]: string }};
+        formError: { [id: string]: string };
         private _validationMessages: { [id: string]: { [id: string]: string } };
         errorMessage: string;
         
         registerContact: RegistrationContact;
-        /**
-         * TOДО: сделать formError как formGroup.formGroup
-         */
+        
         constructor(private _fb: FormBuilder,
                     private _contactService:ContactServiceComponent){
             this.formError = {
-                 'emails':{
-                         'email':''
-                    },
-                    'passwords':{
-                                'password':'',
-                                'repeat_password':''
-                    }
-                
-            // 'email': '',
-            // 'passwords': '',
-            // 'repeat_password':''
+            'email': '',
+            'password': '',
+            'repeat_password':''
         };
-        this.myFormError = {
-            'emails':{
-                'email':''
-            },
-            'passwords':{
-                'password':'',
-                'repeat_password':''
-            }
-        }
-
         console.log('from constructor');
         this.pageTitle = 'hello Vova';
-        // this.print();
+        this.print();
          console.log(this.pageTitle);
         this.registerContact = new RegistrationContact();
         
@@ -70,20 +48,14 @@ directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES]
                     Validators.compose([Validators.required, Validators.minLength(8)]));
         
         this.registerForm = _fb.group({
-            // email: new Control(this.registerContact.email,
-            //         Validators.compose([Validators.required, Validators.minLength(4)])),
-            emails:_fb.group({
-                email: new Control(this.registerContact.email,
+            email: new Control(this.registerContact.email,
                     Validators.compose([Validators.required, Validators.minLength(4)])),
-            }),
+            password: this.passwordControl,
+             repeat_password: new Control(this.registerContact.repeat_password,
+                    Validators.compose([Validators.required]))},
+                   {validator: matchingPasswords('password','repeat_password')});
+                    // Validators.required, Validators.minLength(8),
 
-            passwords:_fb.group({
-                                password: new Control(this.registerContact.password,
-                    Validators.compose([Validators.required, Validators.minLength(8)])),
-                                repeat_password: new Control(this.registerContact.repeat_password,
-                    Validators.required)},{
-                                validator:checkRepeatPassword})
-        });
         
         
         this._validationMessages = {
@@ -112,40 +84,34 @@ directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES]
      * formError binding with current 'field'
      */
     onValueChanged(data: any) {
-        for (let fields in this.formError) {
-            // console.log('fields: '+fields);
-            for(let field in this.formError[fields]){
-                //  console.log('      field: '+field);
-            if (this.formError.hasOwnProperty(fields)) {
-                let hasError = this.registerForm.controls[fields].controls[field].dirty &&
-                    !this.registerForm.controls[fields].controls[field].valid;
-                    console.log('hasError?:'+hasError)
-                this.formError[fields][field] = '';
+        for (let field in this.formError) {
+            if (this.formError.hasOwnProperty(field)) {
+                let hasError = this.registerForm.controls[field].dirty &&
+                    !this.registerForm.controls[field].valid;
+                    console.log('from controls:'+this.registerForm.value.password)
+                this.formError[field] = '';
                 if (hasError) {
                  
-                    for (let key in this.registerForm.controls[fields].controls[field].errors) {
+                    for (let key in this.registerForm.controls[field].errors) {
                            if(field=='repeat_password'){
                         // console.log('repat_error:'+key)
                     }
-                   
-                        if (this.registerForm.controls[fields].controls[field].errors.hasOwnProperty(key)) {
-                            console.log('>>>outer repeat_password error!'+this.registerForm.controls[fields].controls[field].value);    
-                            if(this.registerForm.controls[fields].controls[field]=='repeat_password'){
-                                console.log('>>>inner repeat_password error!');    
-                            }
-                            
-                            this.formError[fields][field] += this._validationMessages[field][key] + ' ';
+                     console.log('repat_error:'+key)
+
+                        if (this.registerForm.controls[field].errors.hasOwnProperty(key)) {
+                            this.formError[field] += this._validationMessages[field][key] + ' ';
                         }
                     }
                 }
             }
         }
-    }
+        console.log('repat_error:'+this.registerForm.hasError('notequal'));
 
-        for(let fields in this.formError['passwords']){
-           console.log('field: '+fields+', error:'+this.formError['passwords'][fields]);
+        if(this.registerForm.hasError('notequal')&&this.registerForm.controls['repeat_password'].value!==''){
+            this.formError['repeat_password']=this._validationMessages['repeat_password']['notequal'];
         }
     }
+    
     
     
     ngOnInit(): any{
@@ -160,19 +126,46 @@ directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES]
         .subscribe(data =>{
             console.log('loginForm have been send');
         });
-    }   
-}
-
-function checkRepeatPassword(control:ControlGroup):{[s:string]:boolean}{
-    for (name in control.controls) {
-    var val = control.controls[name].value
-  }
+    } 
+    
+    
+    // function checkRepeatPassword(control:Control, source:string):{[s:string]:boolean}{
         
-        if(control.value.password!=control.value.repeat_password){
+    //     if(control.value!=source){
+    //         return {'invalid confirm password':true};
+    //     }
+    // }  
+    doCheckRepeatPassword(control:Control){
+        console.log('before print');
+           console.log('after print');
+        console.log('from doCheckRepeatPassword:');
+        return checkRepeatPassword(control,'');
+    }
+    
+    print(){
+        console.log('from doCheckRepeatPassword:');
+    }
+}
+function checkRepeatPassword(control:Control, source:string):{[s:string]:boolean}{
+        
+        if(control.value!=source){
             // this.formError['repeat_password']=+'invalid confirm password';
-            console.log('<<<repeat_password: notequal>>>')
-            return {'notequal':true};  
-        }else{
-            return null;
+            return {'notequal':true};
+            
         }
-    }  
+    } 
+
+    function matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
+  return (group: ControlGroup): {[key: string]: any} => {
+    let password = group.controls[passwordKey];
+    let confirmPassword = group.controls[confirmPasswordKey];
+    console.log('password:'+password.value+', repeat_password:'+confirmPassword.value)
+
+    if (password.value !== confirmPassword.value) {
+        console.log('Error!')
+      return {
+        'notequal': true
+      };
+    }
+  }
+} 

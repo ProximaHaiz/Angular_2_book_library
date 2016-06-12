@@ -1,44 +1,41 @@
  <form class="form-signin col-md-3" [ngFormModel]="registerForm"
   (ngSubmit)="login()">
             <h2 class="form-signin-heading">Please registrate</h2>
-       
-       <div ngControlGroup="emails">
-            <div class="form-group " [ngClass]="{'has-error': formError.emails.email}">
-                    <input class="form-control"
-                        type="text"
-                        id="username"
-                        placeholder="Email address"
-                        ngControl="email"
-                        autofocus="autofocus"/>
-                    <span class="help-block" *ngIf="formError.emails.email">
-                        {{formError.emails.email}}
-                    </span>
-            </div>
+       <div class="form-group " [ngClass]="{'has-error': formError.email}">
+           
+            <input class="form-control"
+                   type="text"
+                   id="username"
+                   placeholder="Email address"
+                   ngControl="email"
+                   autofocus="autofocus"/>
+             <span class="help-block" *ngIf="formError.email">
+                {{formError.email}}
+             </span>
        </div>
-
-        <div ngControlGroup="passwords">
-            <div class="form-group" [ngClass]="{'has-error':formError.passwords.password}">
-                    <input class="form-control"
-                        type="password"
-                        id="password"
-                        placeholder="Password"
-                        ngControl="password">
-                    <span class="help-block" *ngIf="formError.passwords.password">
-                        {{formError.passwords.password}}
-                    </span>
-                </div>
-                
-                <div class="form-group" [ngClass]="{'has-error':formError.passwords.repeat_password}">
-                    <input class="form-control"
-                        type="password"
-                        id="password"
-                        placeholder="Reset password"
-                        ngControl="repeat_password">
-                    <span class="help-block" *ngIf="formError.passwords.repeat_password">
-                        {{formError.passwords.repeat_password}}
-                    </span>
-                </div>
-         </div>
+       
+       <div class="form-group" [ngClass]="{'has-error':formError.password}">
+            <input class="form-control"
+                   type="password"
+                   id="password"
+                   placeholder="Password"
+                   #pass
+                   ngControl="password">
+            <span class="help-block" *ngIf="formError.password">
+                 {{formError.password}}
+            </span>
+        </div>
+        
+        <div class="form-group" [ngClass]="{'has-error':formError.repeat_password}">
+            <input class="form-control"
+                   type="password"
+                   id="password"
+                   placeholder="Reset password"
+                   ngControl="repeat_password">
+            <span class="help-block" *ngIf="formError.repeat_password">
+                 {{formError.repeat_password}}
+            </span>
+        </div>
 
 
             <div class="button-group">
@@ -49,5 +46,5 @@
             </div>
         </form>
         
-        <!--<h1>pageTitle:{{pass.value}}</h1>-->
+        <h1>pageTitle:{{pass.value}}</h1>
         
