@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import {ContactComponent} from '../login/contact';
+import {Categories} from '../content/categories';
 
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
@@ -26,8 +27,21 @@ export class ContactServiceComponent{
         
     }
     
-    _handleError(error: any) {
+  private  _handleError(error: any) {
     console.error(error);
     return Observable.throw(error.json().message || 'Server error');
+  }
+
+  getAllCategories(){
+    const catUrl = 'app_ts/content/categories.json';
+    const categoriesUrl = this._apiUrl+'categories';
+    return this._http.get(categoriesUrl)
+    .map(res => <Categories[]>res.json())
+    .do(data=>console.log(data))
+    .catch(this._handleError)
+  } 
+
+  getProductByCategory(category:string){
+      // return this._http.get(this._apiUrl+)
   }
 }

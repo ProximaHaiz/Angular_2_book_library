@@ -1,0 +1,27 @@
+
+
+
+ 
+ <my-pagination></my-pagination>
+        <router-outlet></router-outlet>    
+        <div>
+        <ul class="list-inline" >
+            <li class="col-md-3" *ngFor="let name of names">
+                <div class="link">
+                    <a class="link" [routerLink]="['/content/contentElement']">
+                        <div class="thumbnail">
+                                <img src="src/images/angular-2.png" alt="...">
+                                    <div class="caption">
+                                    <h3>{{name}}</h3>
+                                    <p>номинальное давление Рном : 10 МПа (100 кгс/см2)
+                                        номинальная подача Qном : 10 л/мин</p>
+                                    </div>
+                        </div>
+                    </a>
+                </div>
+            </li>
+        </ul>
+        </div>
+        <div  class="row">
+        <my-pagination></my-pagination>
+        </div>

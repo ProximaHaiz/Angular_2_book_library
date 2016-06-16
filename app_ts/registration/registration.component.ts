@@ -38,10 +38,10 @@ directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES]
             'password': '',
             'repeat_password':''
         };
-        console.log('from constructor');
+        // console.log('from constructor');
         this.pageTitle = 'hello Vova';
         this.print();
-         console.log(this.pageTitle);
+        //  console.log(this.pageTitle);
         this.registerContact = new RegistrationContact();
         
        this.passwordControl = new Control(this.registerContact.password,

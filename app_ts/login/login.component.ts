@@ -16,6 +16,7 @@ import {Http} from '@angular/http';
 @Component({
     templateUrl:'app_ts/login/login.html',
 styleUrls:['src/css/signin.css'],
+
 directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES]
     }
 )

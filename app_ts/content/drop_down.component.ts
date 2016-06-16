@@ -2,9 +2,6 @@ import {Component} from '@angular/core'
 
 @Component({
     template:`
-     
-
-
 <div class="sidebar">
       <ul class="dropdown-menu" style="display: block; position: static;">  
       <li class="dropdown-submenu active"><a href="#">toyota highlander</a>
@@ -38,6 +35,19 @@ import {Component} from '@angular/core'
      </ul>
 </div>
 
+<div class="dropdown locate {{color}}">
+<input class="form-control" (keyup)="event(val.value)" #val type="text"/>
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+  <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+                <li ><a href="#">HTML</a></li>
+                <li><a href="#">CSS</a></li>
+                <li><a href="#">JavaScript</a></li>
+        </ul>
+
+        <h3>color:{{color}}</h3>
+</div>
+        
 
 
 
@@ -47,15 +57,18 @@ import {Component} from '@angular/core'
 
 export class DropDownComponent{
     categories: string[];
+    color:string='red';
   
-   
-    
     constructor(){
         this.categories = [
             'Nasosy','Клапаны','Распределители',
             'Гидромоторы','Гидростанции','Фильтры',
             'Пневматика'];
             
+    }
+
+    event(value:string){
+        this.color=value;
     }
 }
 
