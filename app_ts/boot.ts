@@ -1,10 +1,18 @@
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {AppComponent} from "./app.component";
 import {HTTP_PROVIDERS} from "@angular/http";
+import { APP_ROUTER_PROVIDERS } from './app.routes';
+import{ContactServiceComponent} from './service/contact.service';
+import{DataHandlerService} from './service/data-handler.service';
 import 'rxjs/Rx';
-// import {MODAL_BROWSER_PROVIDERS} from 'angular2-modal/platform-browser';
 
 /**
  * All classes will use the same instances of following providers elements
  */
-bootstrap(AppComponent, [HTTP_PROVIDERS]);
+bootstrap(AppComponent, [
+                         HTTP_PROVIDERS,
+                         APP_ROUTER_PROVIDERS,
+                         ContactServiceComponent,
+                         DataHandlerService
+                         ])
+    .catch(err => console.error(err));
