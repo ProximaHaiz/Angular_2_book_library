@@ -1,57 +1,50 @@
-import {Component,OnInit} from '@angular/core';
-import{PaginationComponent} from './pagination.component';
-import { Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router';
+import {Component,OnInit, AfterContentInit, AfterViewInit,DoCheck} from '@angular/core';
+import {PaginationComponent} from './pagination.component';
+import { ROUTER_DIRECTIVES, Router,CanActivate  } from '@angular/router';
 import {SingleContentComponent} from './singleContentElement.component';
-import{MainContentComponent} from './main-content';
+import {MainContentComponent} from './main-content';
 import {ContactServiceComponent} from '../service/contact.service';
-import {Categories} from './categories'
+import {Categories} from './categories/categories';
+import {CarouselComponent} from './carousel/carousel';
+import {IContent} from './content-element'
 
 @Component({
     templateUrl:'app_ts/content/content.html',
-    styleUrls:['src/css/content.css'],
-    directives:[PaginationComponent,ROUTER_DIRECTIVES],
+    styleUrls:['src/css/content.css','src/css/carousel.css'],
+    directives:[PaginationComponent,ROUTER_DIRECTIVES,Categories,CarouselComponent],
     
 })
-@Routes([
-    { path: '/contentElement', component: SingleContentComponent },
-    { path: '/', component: MainContentComponent },
+// @Routes([
+//     { path: '/', component: MainContentComponent },
+//     { path: '/contentElement/:id', component: SingleContentComponent },
+//     { path: '/:category', component: MainContentComponent },
     
-])
+// ])
 
-export class ContentComponent implements OnInit{
+export class ContentComponent   {
         categories: Categories[];
         errorMessage: string;
-    public pageTitle: string = 'InStep Movie Hunter';
-   
+        contents:IContent;
+        message:string = 'message';
+        contentsArray: string [];
+        
+
     header: string;
-    constructor(private _contactService:ContactServiceComponent ){
-           
-    }
-
-    getCategories(){
-            this._contactService.getAllCategories()
-                .subscribe(
-                    categories =>this.categories = categories,
-                    error => this.errorMessage = <any>error)
-    }
-
-    ngOnInit() {
-         this.getCategories();
-        //  console.log(this.categories);
-        //  for (var index = 0; index < this.categories.length; index++) {
-        //      var element = this.categories[index];
-        //      console.log(element.categoryName);
-        //  }
-        // for(let cat of this.categories){
-        //     console.log(cat.categoryName);
-        // }
+    constructor(private _contactService:ContactServiceComponent,
+    private _router: Router){}
+    
+      getContent(data:string){
+          console.log('search by: '+data);
+         this._contactService.getProductBySearch(data)
+         .subscribe(
+             content => this.contentsArray = content,
+             error => this.errorMessage = <any>error);
      }
-
-    refClick(ref:string){
-        console.log(ref);
+     
+     send(data:string){
+         console.log(data);
+        //  this._contactService.saveData(data);
+        //  this._router.navigate(['/content'])
+        this.getContent(data);   
+     }
     }
-
-    onFocus(value:string){
-        console.log('focus grented, value:'+value)
-    }
-}
