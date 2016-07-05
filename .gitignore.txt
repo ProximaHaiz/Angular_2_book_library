@@ -9,3 +9,4 @@ node_modules/
 app_js/
 /typings
 ./typings
+*.rar
