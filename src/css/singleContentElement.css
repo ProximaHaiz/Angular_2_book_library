@@ -25,28 +25,20 @@
 }
 
 .content-page .content-header{
-<<<<<<< HEAD
     /*border: 1px solid green;*/
-=======
-    border: 1px solid green;
->>>>>>> 3e9a155e50098a842d7970c1c765342429c52d5b
+
      height: 300px;
 }
 
 .content-page .content-body{
     border: 1 px solid blue;
-<<<<<<< HEAD
     /*background: blue;*/
     height: auto;
-=======
-    background: blue;
-    height: 300px;
->>>>>>> 3e9a155e50098a842d7970c1c765342429c52d5b
     margin: 15px;
     padding: 15px;
 }
 
-<<<<<<< HEAD
+
 .content-page .content-footer{
     height: 50px;
     padding: 10px;
@@ -54,8 +46,6 @@
     border-radius: 10px;
 }
 
-=======
->>>>>>> 3e9a155e50098a842d7970c1c765342429c52d5b
 
 /*Modal Image:*/
 #myImg {

@@ -3,10 +3,8 @@ body,li,h1,h2,h3,h4,h5,h6,a,p{
     font-family: 'Oswald', sans-serif;
 }
 
-
 .header{
     margin-top: 60px;
-<<<<<<< HEAD
     height: auto;
     /*background: red;*/   
 }
@@ -46,12 +44,6 @@ height: 200px;
    /*background-image: url("http://elitefon.ru/images/201211/elitefon.ru_19917.jpg") ;*/
 }
 
-=======
-    height: 100px;
-   
-}
-
->>>>>>> 3e9a155e50098a842d7970c1c765342429c52d5b
 .spaces{
     padding-left: 25px;
     padding-right: 25px;
@@ -86,7 +78,7 @@ height: 200px;
 .navbar{
      height: 40px;
 }
-<<<<<<< HEAD
+
 .container-fluid{
     padding-right: 0px !important;
     padding-left: 0px !important;
@@ -96,8 +88,7 @@ height: 200px;
     
     /*margin-bottom: 15px;*/
 }
-=======
->>>>>>> 3e9a155e50098a842d7970c1c765342429c52d5b
+
 
 
 
