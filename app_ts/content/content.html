@@ -1,0 +1,41 @@
+<div class="header">
+    <carousel></carousel>
+</div>
+<hr>
+
+ <!--<div class="panel-group col-md-2 col-sm-2" id="accordion">
+  <div class="panel panel-default" *ngFor="let category of categories; let i=index">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+        Collapsible Group {{i+1}}</a>
+      </h4>
+    </div>
+    <div id="collapse{{i}}" class="panel-collapse collapse">
+      <div class="panel-body"></div>
+    </div>
+  </div>
+</div> -->
+
+<!--panel with search line-->
+
+<!--<nav class="navbar-default  text-center" role="navigation">
+    <div class="container">
+       
+       
+        <div class="navbar-collapse collapse spaces" id="navbar">
+            <div class="form-group header-input col-md-6 "><br>
+                <input class="form-control input-md " type="text" #contentFilter>  
+                <button style="float:right" class="btn btn-primary" (click)="send(contentFilter.value)">Search</button>     
+        </div>
+    </div>
+    </div>
+</nav>-->
+
+<div class="bg-full-image col-md-12">
+    <categories *ngIf="true"></categories>
+
+    <div class="col-md-9 col-sm-9  background left-space">
+            <router-outlet ></router-outlet>   
+    </div> 
+</div>

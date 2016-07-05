@@ -1,0 +1,56 @@
+    <!--<my-pagination></my-pagination>-->
+    
+        
+        
+        <!--<router-outlet></router-outlet>    -->
+        <!--<div class="row content-list">
+        <ul class="list-inline" >
+            <li class="col-sm-3 col-lg-3 col-md-3" *ngFor="let name of names">
+                <div class="link">
+                    <a class="link" [routerLink]="['/content/contentElement']">
+                        <div class="thumbnail">
+                                <img src="src/images/angular-2.png" alt="...">
+                                    <div class="caption">
+                                    <h3>{{name}}</h3>
+                                    <p>номинальное давление Рном : 10 МПа (100 кгс/см2)
+                                        номинальная подача Qном : 10 л/мин</p>
+                                    </div>
+                        </div>
+                    </a>
+                </div>
+            </li>
+        </ul>
+        </div>-->
+        
+        <div class="form-group header-input col-md-8 "><br>
+      
+                <input class="col-md-7" style="float:left" class="form-control input-md " type="text" [(ngModel)]="contentFilter">  
+                   
+        </div>
+         <button class="col-md-2" style="margin-top:20px;" class="btn btn-primary" (click)="search(contentFilter.value)">Search</button> 
+        
+         <h3>searched:<span style="color:grey;">{{contentFilter}}</span></h3>
+        <div class="row" style="margin-top:25px">
+            <!--| contentFilter:contentFilter-->
+           
+      <div *ngFor="let name of contents | contentFilter:contentFilter" class="col-sm-4 col-lg-4 col-md-4">
+          <a class="link" [routerLink]="['/content/contentElement', name.contentId]">
+            <div class="thumbnail">
+                    <img src={{name.imageurl}} alt="...">
+                    <hr>
+                        <div class="caption">
+                            <!--| currency:'USD':true-->
+                            <h4 class="pull-right">{{name.price }}</h4>
+                            <h4><a [routerLink]="['/content/contentElement', name.contentId]">{{name.name | uppercase}}</a></h4>
+                        </div>
+                        <div class="ratings">
+                            <!--rating-->
+                        </div>
+            </div>
+          </a>
+        <!--<auction-product-item [product]="product"></auction-product-item>-->
+      </div>
+    </div>
+        <div  class="row col-md-12">
+             <my-pagination></my-pagination>
+        </div>

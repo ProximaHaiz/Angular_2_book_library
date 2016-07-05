@@ -1,0 +1,51 @@
+ <div style="margin-top:50px;">
+    <h3>Parent</h3>
+    <div>{{search}}</div>
+    <input (keyup)="updateValue()" [ngFormControl]="term">
+</div>
+ <div class="col-md-12 bgimage">
+ <form class="form-signin col-md-3" [ngFormModel]="loginForm"
+  (ngSubmit)="login()">
+            <h2 class="form-signin-heading">Please login</h2>
+       <div class="form-group " [ngClass]="{'has-error': formError.username}">
+           
+            <input class="form-control"
+                   type="text"
+                   id="username"
+                   placeholder="Username"
+                   ngControl="username"
+                   (onkeyup)="keyup()"
+                   autofocus="autofocus"/>
+             <span class="help-block" *ngIf="formError.username">
+                {{formError.username}}
+             </span>
+       </div>
+       
+       <div class="form-group" [ngClass]="{'has-error':formError.password}">
+            <input class="form-control"
+                   type="password"
+                   id="password"
+                   placeholder="Password"
+                   ngControl="password">
+            <span class="help-block" *ngIf="formError.password">
+                 {{formError.password}}
+            </span>
+        </div>
+
+
+            <div class="button-group">
+            <a class="btn btn-primary btn-md">Sign in</a>
+            <button type="submit"
+                     class="btn btn-primary btn-md"
+                     [disabled]='!loginForm.valid'>Log in</button>
+            </div>
+        </form>
+
+        <div>
+
+            <test></test>
+
+         
+        
+        
+        
