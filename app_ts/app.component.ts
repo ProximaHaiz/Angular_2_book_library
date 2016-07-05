@@ -13,14 +13,10 @@ import {NavBarComponent} from './navbar/nav-bar.component'
     template: `
     <nav-bar></nav-bar>
 
-
-      
-       
         <div class="container spaces main-page-container-fluid">
             <router-outlet></router-outlet>
         </div>
-        
-    
+            
 <div class="navbar-fixed-bottom row-fluid">
     <div class="navbar-inner">
           <div class="container">
@@ -28,26 +24,12 @@ import {NavBarComponent} from './navbar/nav-bar.component'
           </div>
     </div>
 </div>
-
-    
     `,
     directives: [ROUTER_DIRECTIVES,NavBarComponent],
-    providers:[HTTP_PROVIDERS],
-  
-     
+    providers:[HTTP_PROVIDERS],     
 })
-// @Routes([
-//     { path: '/', component: LoginFormComponent },
-//     { path: '/login', component: LoginFormComponent },
-//     { path: '/register', component: RegistrationFormComponent },
-//     { path: '/drop', component: DropDownComponent },
-//     { path: '/content', component: ContentComponent },
 
-    
-// ])
 export class AppComponent {
-   pageTitle: string = 'Vova';
    listFilter: string = '';
- 
    constructor(){}               
 }
