@@ -1,12 +1,11 @@
-<<<<<<< HEAD
- <div style="margin-top:50px;">
+
+<div style="margin-top:50px;">
     <h3>Parent</h3>
     <div>{{search}}</div>
     <input (keyup)="updateValue()" [ngFormControl]="term">
 </div>
  <div class="col-md-12 bgimage">
-=======
->>>>>>> 3e9a155e50098a842d7970c1c765342429c52d5b
+
  <form class="form-signin col-md-3" [ngFormModel]="loginForm"
   (ngSubmit)="login()">
             <h2 class="form-signin-heading">Please login</h2>
@@ -17,10 +16,7 @@
                    id="username"
                    placeholder="Username"
                    ngControl="username"
-<<<<<<< HEAD
                    (onkeyup)="keyup()"
-=======
->>>>>>> 3e9a155e50098a842d7970c1c765342429c52d5b
                    autofocus="autofocus"/>
              <span class="help-block" *ngIf="formError.username">
                 {{formError.username}}
@@ -46,15 +42,6 @@
                      [disabled]='!loginForm.valid'>Log in</button>
             </div>
         </form>
-
-<<<<<<< HEAD
-        <div>
-
+        </div>
+        
             <test></test>
-
-=======
->>>>>>> 3e9a155e50098a842d7970c1c765342429c52d5b
-         
-        
-        
-        
