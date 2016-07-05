@@ -16,10 +16,7 @@ import {Http} from '@angular/http';
 @Component({
     templateUrl:'app_ts/login/login.html',
     styleUrls:['src/css/signin.css'],
-
-
 directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES,TestComponent]
-
     }
 )
  export class LoginFormComponent implements OnInit{
@@ -39,7 +36,6 @@ directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES,TestComponent]
                         error => this.errorMessage = <any>error
                     )
             }
-
         updateValue(){
               this.searchStream.next(this.term.value); 
         }
