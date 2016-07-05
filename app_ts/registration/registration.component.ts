@@ -157,7 +157,6 @@ function checkRepeatPassword(control:Control, source:string):{[s:string]:boolean
     let password = group.controls[passwordKey];
     let confirmPassword = group.controls[confirmPasswordKey];
     console.log('password:'+password.value+', repeat_password:'+confirmPassword.value)
-
     if (password.value !== confirmPassword.value) {
         console.log('Error!')
       return {
