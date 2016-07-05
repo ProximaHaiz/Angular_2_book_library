@@ -13,15 +13,8 @@ import {ContactServiceComponent} from '../../service/contact.service';
 export class CarouselComponent implements OnInit{
    content: IContent [];
    
-   constructor(private _contactService:ContactServiceComponent){
-    }
-   getRandomContent(){
-       
-   }
+   constructor(private _contactService:ContactServiceComponent){}
+   getRandomContent(){}
    
-   ngOnInit(){
-       
-   }
-   
-   
+   ngOnInit(){}
 }
