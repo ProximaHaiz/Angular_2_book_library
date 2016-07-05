@@ -1,12 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-<<<<<<< HEAD
 import {ROUTER_DIRECTIVES} from '@angular/router';
-=======
-import {
-     ROUTER_DIRECTIVES,
-     OnActivate,
-     RouteSegment } from '@angular/router';
->>>>>>> 3e9a155e50098a842d7970c1c765342429c52d5b
 import {
      FormBuilder,
      ControlGroup,
@@ -75,11 +68,8 @@ directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES]
             },
             'repeat_password': {
                 'required': 'Password is required',
-<<<<<<< HEAD
                 'notequal': 'Confirm password not equal',
-=======
-                'notequal': 'Password must be equal to password',
->>>>>>> 3e9a155e50098a842d7970c1c765342429c52d5b
+
             }
         };
         
