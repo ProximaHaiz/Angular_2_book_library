@@ -1,5 +1,8 @@
 .form-signin{
+<<<<<<< HEAD
     /*background-image: url("http://i1-news.softpedia-static.com/images/news2/Download-Aqua-and-Fauna-Dynamic-Themes-for-Windows-7-4.jpg");*/
+=======
+>>>>>>> 3e9a155e50098a842d7970c1c765342429c52d5b
   margin-top:10%;
   /*margin: auto;*/
   margin-left:37%;
@@ -34,6 +37,7 @@
     width: 49%;
     float:left;
 }
+<<<<<<< HEAD
 
 .bgimage {
 /*background-image: url("https://media.giphy.com/media/11O4QMECboQao8/giphy.gif") ;*/
@@ -44,3 +48,5 @@ height: 850px;
 
 }
 
+=======
+>>>>>>> 3e9a155e50098a842d7970c1c765342429c52d5b

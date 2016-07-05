@@ -1,5 +1,12 @@
 import {Component, OnInit} from '@angular/core';
+<<<<<<< HEAD
 import {ROUTER_DIRECTIVES} from '@angular/router';
+=======
+import {
+     ROUTER_DIRECTIVES,
+     OnActivate,
+     RouteSegment } from '@angular/router';
+>>>>>>> 3e9a155e50098a842d7970c1c765342429c52d5b
 import {
      FormBuilder,
      ControlGroup,
@@ -7,22 +14,32 @@ import {
      Validators,
      FORM_DIRECTIVES } from '@angular/common';
 import{ContactComponent} from './contact'
+<<<<<<< HEAD
 import{ContactServiceComponent} from '../service/contact.service';
 import{DataHandlerService} from '../service/data-handler.service';
 import {Http} from '@angular/http';
 import {TestComponent} from './login-test.component';
 import {Subject} from "rxjs/Subject";
+=======
+import{ContactServiceComponent} from '../service/contact.service'
+import {Http} from '@angular/http';
+>>>>>>> 3e9a155e50098a842d7970c1c765342429c52d5b
 
 @Component({
     templateUrl:'app_ts/login/login.html',
 styleUrls:['src/css/signin.css'],
 
+<<<<<<< HEAD
 directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES,TestComponent]
+=======
+directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES]
+>>>>>>> 3e9a155e50098a842d7970c1c765342429c52d5b
     }
 )
  export class LoginFormComponent implements OnInit{
         loginForm: ControlGroup;
         public pageTitle: string;
+<<<<<<< HEAD
         term = new Control();
         search:string;
          private searchStream = new Subject<string>();
@@ -43,6 +60,10 @@ directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES,TestComponent]
         }
 
       
+=======
+        
+        
+>>>>>>> 3e9a155e50098a842d7970c1c765342429c52d5b
         formError: { [id: string]: string };
         private _validationMessages: { [id: string]: { [id: string]: string } };
         errorMessage: string;
@@ -50,8 +71,12 @@ directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES,TestComponent]
         newContact: ContactComponent;
         
         constructor(private _fb: FormBuilder,
+<<<<<<< HEAD
                     private _contactService:ContactServiceComponent,
                     private _dataHandlerService: DataHandlerService){
+=======
+                    private _contactService:ContactServiceComponent){
+>>>>>>> 3e9a155e50098a842d7970c1c765342429c52d5b
             this.formError = {
             'username': '',
             'password': ''
@@ -105,7 +130,13 @@ directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES,TestComponent]
     
     
     
+<<<<<<< HEAD
   
+=======
+    ngOnInit(): any{
+        // this.newContact = new ContactComponent();
+    }
+>>>>>>> 3e9a155e50098a842d7970c1c765342429c52d5b
     
     login(){
         console.log(this.loginForm.value);

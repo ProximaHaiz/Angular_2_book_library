@@ -16,6 +16,7 @@
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
     'app':                        { main: 'boot.js',  defaultExtension: 'js' },
+<<<<<<< HEAD
     // 'rxjs':                       { defaultExtension: 'js' },
     'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
     // '@angular/router': { main: 'index.js', defaultExtension: 'js' },
@@ -27,6 +28,10 @@
     '@angular/router'                  : {main: 'index'},
     '@angular/platform-browser'        : {main: 'index'},
 '@angular/platform-browser-dynamic': {main: 'index'}
+=======
+    'rxjs':                       { defaultExtension: 'js' },
+    'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
+>>>>>>> 3e9a155e50098a842d7970c1c765342429c52d5b
   };
 
   var ngPackageNames = [
@@ -47,6 +52,7 @@
   }
 
   // Bundled (~40 requests):
+<<<<<<< HEAD
   // function packUmd(pkgName) {
   //   packages['@angular/'+pkgName] = { main: pkgName + '.umd.js', defaultExtension: 'js' };
   // };
@@ -57,6 +63,11 @@
             packages['@angular/' + pkgName] = { main: 'bundles/' + pkgName + '.umd.js', defaultExtension: 'js' };
         }
 }
+=======
+  function packUmd(pkgName) {
+    packages['@angular/'+pkgName] = { main: pkgName + '.umd.js', defaultExtension: 'js' };
+  };
+>>>>>>> 3e9a155e50098a842d7970c1c765342429c52d5b
 
   var setPackageConfig = System.packageWithIndex ? packIndex : packUmd;
 
