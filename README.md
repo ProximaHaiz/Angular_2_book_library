@@ -12,4 +12,6 @@ Get it now</a> if it's not already installed on your machine.
  
 # Required installed node.js and npm 
 
+# Updated to RC.4 (05.07.2016) 
+
 
