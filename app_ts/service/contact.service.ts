@@ -86,16 +86,20 @@ export class ContactServiceComponent{
     .catch(this._handleError)
   } 
 
-  getProductBySearch(search:string){
-      return this._http.get(this._contentUrl)
-            .map(res => this.transformBySearchString(res, search))
+  getProductBySearch(searchQuery:string){
+      let params = new URLSearchParams();
+      params.set('searchQuery',searchQuery);
+      return this._http.get(this._apiUrl+'productBySearch',{search:params})
+            .map(res => res.json())
             .do(data => console.log('Data: ' + JSON.stringify(data)))
             .catch(this._handleError);  
   }
 
      getProductByCategory(category:string){
-      return this._http.get(this._apiUrl+"products")
-            .map(res => this.transformByCategory(res, category))
+         let params = new URLSearchParams();
+      params.set('category',category);
+      return this._http.get(this._apiUrl+"productsByCategory",{search: params})
+            .map(res => res.json())
             .do(data => console.log('Products by category: ' + JSON.stringify(data)))
             .catch(this._handleError);
   }

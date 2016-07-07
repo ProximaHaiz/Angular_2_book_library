@@ -15,16 +15,13 @@
         </div>
        
         <div class="navbar-collapse collapse spaces" id="navbar">
-        
-        
-        
+                
            <div class="form-group header-input col-md-4 ">
-                <input class="form-control input-md" [(ngModel)]='listFilter' type="text"
-                placeholder="Search...">
+                <input class="form-control input-md"  type="text"
+                (keyup)="updateValue()" [ngFormControl]="searchField"
+                  placeholder="Search...">
          </div>
 
-      
-            
                 <div class="col-md-4">
                     <ul class="nav navbar-nav navbar-rightnavbar-height navbar-height">
                         <li><a [routerLink]="['/drop']" > <span class="glyphicon glyphicon-refresh"></span>drop</a></li>

@@ -16,7 +16,7 @@ import{DataHandlerService} from '../service/data-handler.service'
 
 export class TestComponent{
     item: string;
-  subscription:Subscription;
+    subscription:Subscription;
   constructor(private _navService:DataHandlerService) {}
   ngOnInit() {
     console.log('TestComponent - Init')
