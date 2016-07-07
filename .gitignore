@@ -10,6 +10,10 @@ _test-output
 _temp
 *.rar
 *.zip
+.rar
+.zip
+/.rar
+/.zip
 
 !**/*e2e-spec.js
 !karma*.js
