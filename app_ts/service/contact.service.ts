@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import {ContactComponent} from '../login/contact';
-import {Categories} from '../content/categories/categories';
+import {Categories} from '../content/categories/categories.component';
 import {IContent} from '../content/content-element';
 import {CONTENT_ITEMS} from '../content/content-data';
 import {InputData} from './input-search-data';
@@ -25,28 +25,15 @@ export class ContactServiceComponent{
   private _contentUrl = 'app_ts/content/content.json';
     constructor(private _http: Http){}
     
-     saveData(str: string){
-          this.sharingData.name=str; 
-        }
-     getData():string{
-        return this.sharingData.name;
-        }
     
-    getSearchContent(search:string){
-         return this._http.get(this._contentUrl)
-            .map(res => this.transformBySearchString(res, search))
-            .do(data => console.log(CONTENT_ITEMS.push()))
-            .catch(this._handleError);
-    }
-    
-     getContents() {
+     getProducts() {
         return this._http.get(this._apiUrl+"products")
             .map(res => <IContent[]> res.json())
             .do(data => console.log(data))
             .catch(this._handleError);
     }
     
-        getContent(id:number){
+    getProduct(id:number){
             let params = new URLSearchParams();
             params.set('productId',id+'');
         return this._http.get(this._apiUrl+"product",{search:params})
@@ -54,31 +41,25 @@ export class ContactServiceComponent{
             .do(data => console.log('Data: ' + JSON.stringify(data)))
             .catch(this._handleError);
     }
-    
+        
+    getProductBySearch(searchQuery:string){
+      let params = new URLSearchParams();
+      params.set('searchQuery',searchQuery);
+      return this._http.get(this._apiUrl+'productBySearch',{search:params})
+            .map(res => res.json())
+            .do(data => console.log('Data: ' + JSON.stringify(data)))
+            .catch(this._handleError);  
+  }
+
     loginUser(user: any){
         const loginUrl = this._apiUrl+'login';
-        console.log('User send:'+ user)
-        
-
+        console.log('User send:'+ user);
         return this._http.post(loginUrl,JSON.stringify(user))
         .map(res => res.json())
         .catch(this._handleError);
     }
-    
-  private  _handleError(error: any) {
-    console.error(error);
-    return Observable.throw(error.json().message || 'Server error');
-  }
-  
-  getProduct(id: number){
-    const categoriesUrl = this._apiUrl+'product';
-        return this._http.get(categoriesUrl)
-            .map(res => <IContent>res.json())
-            .do(data=>console.log('Data: '+JSON.stringify(data)))
-            .catch(this._handleError)
-  }
-  
-  getAllCategories(){
+
+    getAllCategories(){
     const categoriesUrl = this._apiUrl+'categories';
     return this._http.get(categoriesUrl)
     .map(res => <Categories[]>res.json())
@@ -86,18 +67,18 @@ export class ContactServiceComponent{
     .catch(this._handleError)
   } 
 
-  getProductBySearch(search:string){
-      return this._http.get(this._contentUrl)
-            .map(res => this.transformBySearchString(res, search))
-            .do(data => console.log('Data: ' + JSON.stringify(data)))
-            .catch(this._handleError);  
-  }
-
      getProductByCategory(category:string){
-      return this._http.get(this._apiUrl+"products")
-            .map(res => this.transformByCategory(res, category))
+         let params = new URLSearchParams();
+      params.set('category',category);
+      return this._http.get(this._apiUrl+"productsByCategory",{search: params})
+            .map(res => res.json())
             .do(data => console.log('Products by category: ' + JSON.stringify(data)))
             .catch(this._handleError);
+  }
+
+    private  _handleError(error: any) {
+    console.error(error);
+    return Observable.throw(error.json().message || 'Server error');
   }
   
      private  transformBySearchString(value: any, filter: string): IContent[] {

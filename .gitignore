@@ -10,10 +10,8 @@ _test-output
 _temp
 *.rar
 *.zip
-.rar
-.zip
-/.rar
-/.zip
+app_js
+.vscode
 
 !**/*e2e-spec.js
 !karma*.js
@@ -21,3 +19,6 @@ _temp
 !systemjs.config.js
 !typings/typings.d.ts
 !wallaby.js
+
+_test-output
+_temp

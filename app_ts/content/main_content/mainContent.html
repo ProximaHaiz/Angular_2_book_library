@@ -1,0 +1,32 @@
+<!--<my-pagination></my-pagination>-->
+
+    <div>
+        <a [routerLink]="['/content/addProduct', 0]" class="btn btn-success btn-md" style="color: white ">
+                <span class="glyphicon glyphicon-plus"></span> Add 
+        </a>
+    </div>
+    
+
+       
+    <div class="row" style="margin-top:25px">  
+      <div *ngFor="let name of contents" class="col-sm-4 col-lg-4 col-md-4">
+          <a class="link" [routerLink]="['/content/contentElement', name.contentId]">
+            <div class="thumbnail">
+                    <img src={{name.imageurl}} alt="...">
+                    <hr>
+                        <div class="caption">
+                            <!--| currency:'USD':true-->
+                            <h4 class="pull-right">{{name.price }}</h4>
+                            <h4><a [routerLink]="['/content/contentElement', name.contentId]">{{name.name | uppercase}}</a></h4>
+                        </div>
+                        <div class="ratings">
+                            <!--rating-->
+                        </div>
+            </div>
+          </a>
+      </div>
+    </div>
+        <div  class="row col-md-12">
+             <my-pagination></my-pagination>
+        </div>
+

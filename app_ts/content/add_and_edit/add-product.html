@@ -1,0 +1,68 @@
+<div >
+      <form class="form-signin col-md-6 col-md-offset-3" style="margin-bottom: 100px;"
+       [ngFormModel]="productForm"
+      (submit)="submit()">
+ 
+            <h2 class="form-signin-heading text-center">Add new product</h2>
+       <div class="form-group " >
+    
+           
+            <input class="form-control"
+                   type="text"
+                   id="username"
+                   placeholder="Name"
+                   (onkeyup)="keyup()"
+                   autofocus="autofocus"/>
+       </div>
+       
+          <div class="form-group" >
+            <input class="form-control"
+                   type="text"
+                   id="password"
+                   placeholder="Imageurl">
+        </div>
+
+          <div class="form-group" >
+            <input class="form-control"
+                   type="text"
+                   id="password"
+                   placeholder="Product Id">
+        </div>
+
+          <div class="form-group" >
+            <input class="form-control"
+                   type="text"
+                   id="password"
+                   placeholder="Title">
+        </div>
+
+          <div class="form-group" >
+            <input class="form-control"
+                   type="text"
+                   id="password"
+                   placeholder="Price">
+        </div>
+
+          <div class="form-group" >
+            <input class="form-control"
+                   type="text"
+                   id="password"
+                   placeholder="Category">
+        </div>
+
+            <div class="form-group" >
+            <textarea class="form-control"
+                   id="password"
+                   placeholder="Description">
+            </textarea>
+        </div>
+        
+
+            <div class="button-group">
+            <a class="btn btn-primary btn-md">Sign in</a>
+            <button type="submit"
+                     class="btn btn-primary btn-md"
+                     [disabled]='!productForm.valid'>Log in</button>
+            </div>
+        </form>
+</div>

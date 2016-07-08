@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import { ROUTER_DIRECTIVES, Router, ActivatedRoute} from '@angular/router';
-
-import {IContent} from './content-element';
-import {ContactServiceComponent} from '../service/contact.service';
+import {IContent} from '../content-element';
+import {ContactServiceComponent} from '../../service/contact.service';
 
 @Component({
-    templateUrl:'app_ts/content/singleContentElement.html',
+    templateUrl:'app_ts/content/single_element/single-product.html',
     styleUrls:['src/css/singleContentElement.css'],
     directives: [ROUTER_DIRECTIVES]
 })
@@ -26,7 +25,7 @@ export class SingleContentComponent implements OnInit{
     }
 
     getContent(id: number){
-       this._contactService.getContent(id)
+       this._contactService.getProduct(id)
             .subscribe(
                 cont => this.content = <IContent>cont,
                 error => this.errorMessage = <any>error);

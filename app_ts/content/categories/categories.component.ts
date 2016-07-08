@@ -1,7 +1,7 @@
 import{Component,OnInit} from '@angular/core';
 import {ContactServiceComponent} from '../../service/contact.service';
 import { ROUTER_DIRECTIVES} from '@angular/router';
-import {MainContentComponent} from '../main-content';
+import {MainContentComponent} from '../main_content/main-content.component';
 
 @Component({
     selector:'categories',

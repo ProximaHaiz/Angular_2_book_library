@@ -11,7 +11,6 @@ import{ContactServiceComponent} from '../service/contact.service';
 import{DataHandlerService} from '../service/data-handler.service';
 import {TestComponent} from './login-test.component';
 import {Subject} from "rxjs/Subject";
-import {Http} from '@angular/http';
 
 @Component({
     templateUrl:'app_ts/login/login.html',
@@ -24,7 +23,8 @@ directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES,TestComponent]
         public pageTitle: string;
         term = new Control();
         search:string;
-         private searchStream = new Subject<string>();
+        errorMessage: string;
+        private searchStream = new Subject<string>();
 
            ngOnInit(): any{
                 this.searchStream
@@ -42,7 +42,7 @@ directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES,TestComponent]
 
         formError: { [id: string]: string };
         private _validationMessages: { [id: string]: { [id: string]: string } };
-        errorMessage: string;
+        
         
         newContact: ContactComponent;
         

@@ -1,25 +1,18 @@
 import {Component,OnInit, AfterContentInit, AfterViewInit,DoCheck} from '@angular/core';
 import {PaginationComponent} from './pagination.component';
 import { ROUTER_DIRECTIVES, Router,CanActivate  } from '@angular/router';
-import {SingleContentComponent} from './singleContentElement.component';
-import {MainContentComponent} from './main-content';
+import {SingleContentComponent} from './single_element/singleContentElement.component';
+import {MainContentComponent} from './main_content/main-content.component';
 import {ContactServiceComponent} from '../service/contact.service';
-import {Categories} from './categories/categories';
+import {Categories} from './categories/categories.component';
 import {CarouselComponent} from './carousel/carousel';
 import {IContent} from './content-element'
 
 @Component({
     templateUrl:'app_ts/content/content.html',
     styleUrls:['src/css/content.css','src/css/carousel.css'],
-    directives:[PaginationComponent,ROUTER_DIRECTIVES,Categories,CarouselComponent],
-    
+    directives:[PaginationComponent,ROUTER_DIRECTIVES,Categories,CarouselComponent],  
 })
-// @Routes([
-//     { path: '/', component: MainContentComponent },
-//     { path: '/contentElement/:id', component: SingleContentComponent },
-//     { path: '/:category', component: MainContentComponent },
-    
-// ])
 
 export class ContentComponent   {
         categories: Categories[];

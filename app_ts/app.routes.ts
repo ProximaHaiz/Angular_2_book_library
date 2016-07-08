@@ -4,8 +4,9 @@ import{ContentComponent} from './content/content.component';
 import{ContactServiceComponent} from './service/contact.service';
 import {RegistrationFormComponent} from './registration/registration.component';
 import{DropDownComponent} from './content/drop_down.component';
-import {SingleContentComponent} from './content/singleContentElement.component';
-import {MainContentComponent} from './content/main-content';
+import {SingleContentComponent} from './content/single_element/single-product.component';
+import {MainContentComponent} from './content/main_content/main-content.component';
+import { AddNewProduct } from './content/add_and_edit/add-new-product.component'
 
 
 
@@ -19,6 +20,7 @@ export const routes: RouterConfig = [
             { path: '', component: MainContentComponent },
             { path: 'contentElement/:id', component: SingleContentComponent },
             { path: 'category/:category', component: MainContentComponent},
+            { path: 'addProduct/:id', component: AddNewProduct }
              ] }
 ];
 
