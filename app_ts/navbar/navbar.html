@@ -18,7 +18,7 @@
                 
            <div class="form-group header-input col-md-4 ">
                 <input class="form-control input-md"  type="text"
-                (keyup)="updateValue()" [ngFormControl]="searchField"
+                (keyup)="updateValue()"  [formControl] ="searchField"
                   placeholder="Search...">
          </div>
 

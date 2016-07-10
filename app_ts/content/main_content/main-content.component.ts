@@ -5,7 +5,7 @@ import { SingleContentComponent} from '../single_element/single-product.componen
 import {ContactServiceComponent} from '../../service/contact.service';
 import {DataHandlerService} from '../../service/data-handler.service'
 import {ContentFilterPipe} from '../pipes/content-filter.pipe';
-import { AddNewProduct } from '../add_and_edit/add-new-product.component'
+import { AddNewProduct } from '../add_and_edit/add-new-product.component';
 
 import {Subject} from "rxjs/Subject";
 import {Subscription} from 'rxjs/Subscription';

@@ -4,13 +4,16 @@
  */
 (function(global) {
 
+   var formsVer = '@0.2.0'; // lock forms version
+
   // map tells the System loader where to look for things
   var map = {
     'app':                        'app_js', // 'dist',
 
     '@angular':                   'node_modules/@angular',
     'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
-    'rxjs':                       'node_modules/rxjs'
+    'rxjs':                       'node_modules/rxjs',
+   
   };
 
   // packages tells the System loader how to load when no filename and/or no extension
@@ -58,7 +61,11 @@
         } else {
             packages['@angular/' + pkgName] = { main: 'bundles/' + pkgName + '.umd.js', defaultExtension: 'js' };
         }
+          packages['@angular/forms'] = { main: 'index.js', defaultExtension: 'js' };
 }
+
+ // Forms not on rc yet
+
 
   var setPackageConfig = System.packageWithIndex ? packIndex : packUmd;
 
