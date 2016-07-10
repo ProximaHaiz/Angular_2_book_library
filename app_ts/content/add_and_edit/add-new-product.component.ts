@@ -6,7 +6,7 @@ import {
      FormControl,
      FormGroup, REACTIVE_FORM_DIRECTIVES 
 } from '@angular/forms';
-import{ContactServiceComponent} from '../../service/contact.service';
+import{ProductServiceComponent} from '../../service/product.service';
 import { IContent } from '../content-element'
 
 @Component({
@@ -24,7 +24,7 @@ export class AddNewProduct implements OnInit{
         private _fb: FormBuilder,
         private _router: Router,
         private _route: ActivatedRoute,
-        private _contactService: ContactServiceComponent){
+        private _contactService: ProductServiceComponent){
             this.product = new IContent();
             this.productForm = _fb.group({
             productName: new FormControl(this.product.name, Validators.required),

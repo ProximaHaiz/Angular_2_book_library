@@ -3,7 +3,7 @@ import {PaginationComponent} from './pagination.component';
 import { ROUTER_DIRECTIVES, Router,CanActivate  } from '@angular/router';
 import {SingleContentComponent} from './single_element/single-product.component';
 import {MainContentComponent} from './main_content/main-content.component';
-import {ContactServiceComponent} from '../service/contact.service';
+import {ProductServiceComponent} from '../service/product.service';
 import {Categories} from './categories/categories.component';
 import {CarouselComponent} from './carousel/carousel';
 import {IContent} from './content-element'
@@ -23,7 +23,7 @@ export class ContentComponent   {
         
 
     header: string;
-    constructor(private _contactService:ContactServiceComponent,
+    constructor(private _contactService:ProductServiceComponent,
     private _router: Router){}
     
       getContent(data:string){

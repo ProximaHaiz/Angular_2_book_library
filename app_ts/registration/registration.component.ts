@@ -7,7 +7,7 @@ import {
      FormGroup, REACTIVE_FORM_DIRECTIVES 
 } from '@angular/forms';
 import{RegistrationContact} from './registration-contact'
-import{ContactServiceComponent} from '../service/contact.service'
+import{UserServiceComponent} from '../service/user.service'
 import {Http} from '@angular/http';
 import{RepeatPasswordValidator} from '../shared/repeat-password-validator'
 
@@ -29,7 +29,7 @@ directives: [ROUTER_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
         private registerContact: RegistrationContact;
         
         constructor(private _fb: FormBuilder,
-                    private _contactService:ContactServiceComponent){
+                    private _contactService:UserServiceComponent){
             this.formError = {
             'email': '',
             'password': '',
@@ -98,7 +98,6 @@ directives: [ROUTER_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
             this.formError['repeat_password']=this._validationMessages['repeat_password']['notequal'];
         }
     }
-    
     
     
     ngOnInit(): any{
