@@ -1,7 +1,7 @@
 import {Component,OnInit, AfterContentInit, AfterViewInit,DoCheck} from '@angular/core';
 import {PaginationComponent} from './pagination.component';
 import { ROUTER_DIRECTIVES, Router,CanActivate  } from '@angular/router';
-import {SingleContentComponent} from './single_element/singleContentElement.component';
+import {SingleContentComponent} from './single_element/single-product.component';
 import {MainContentComponent} from './main_content/main-content.component';
 import {ContactServiceComponent} from '../service/contact.service';
 import {Categories} from './categories/categories.component';
