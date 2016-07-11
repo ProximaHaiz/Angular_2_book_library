@@ -1,5 +1,5 @@
 import{Component,OnInit} from '@angular/core';
-import {ContactServiceComponent} from '../../service/contact.service';
+import {CategoryServiceComponent} from '../../service/category.service';
 import { ROUTER_DIRECTIVES} from '@angular/router';
 import {MainContentComponent} from '../main_content/main-content.component';
 
@@ -10,24 +10,20 @@ import {MainContentComponent} from '../main_content/main-content.component';
     directives:[ROUTER_DIRECTIVES],
 
 })
-// @Routes([
-//     { path: '/:category', component: MainContentComponent },
-// ])
+
 export class Categories implements OnInit{
-   categories: Categories[];
-   errorMessage: string;
-    constructor(private _contactService:ContactServiceComponent){}
+   private categories: Categories[];
+   private errorMessage: string;
+
+    constructor(private _contactService:CategoryServiceComponent){}
       getCategories(){
             this._contactService.getAllCategories()
                 .subscribe(
                     categories => this.categories = categories,
                     error => this.errorMessage = <any>error)
-                    console.log('from getCategories');
     }
     
        ngOnInit() {
-         this.getCategories();
-        console.log(' OnInit')
-     }
-
+         this.getCategories()
+       }
 }

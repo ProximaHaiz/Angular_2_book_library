@@ -1,6 +1,6 @@
 <div >
       <form class="form-signin col-md-6 col-md-offset-3" style="margin-bottom: 100px;"
-       [ngFormModel]="productForm"
+      [formGroup] ="productForm"
       (submit)="submit()">
  
             <h2 class="form-signin-heading text-center">Add new product</h2>
@@ -10,15 +10,18 @@
             <input class="form-control"
                    type="text"
                    id="username"
-                   placeholder="Name"
+                   placeholder="Name of product"
+                   formControlName="productName"
                    (onkeyup)="keyup()"
-                   autofocus="autofocus"/>
+                   autofocus="autofocus"
+                   />
        </div>
        
           <div class="form-group" >
             <input class="form-control"
                    type="text"
                    id="password"
+                   formControlName="imageUrl"
                    placeholder="Imageurl">
         </div>
 
@@ -26,6 +29,7 @@
             <input class="form-control"
                    type="text"
                    id="password"
+                   formControlName="productId"
                    placeholder="Product Id">
         </div>
 
@@ -33,6 +37,7 @@
             <input class="form-control"
                    type="text"
                    id="password"
+                   formControlName="title"
                    placeholder="Title">
         </div>
 
@@ -40,6 +45,7 @@
             <input class="form-control"
                    type="text"
                    id="password"
+                   formControlName="price"
                    placeholder="Price">
         </div>
 
@@ -47,22 +53,24 @@
             <input class="form-control"
                    type="text"
                    id="password"
+                   formControlName="category"
                    placeholder="Category">
         </div>
 
             <div class="form-group" >
             <textarea class="form-control"
                    id="password"
+                   formControlName="description"
                    placeholder="Description">
             </textarea>
         </div>
         
 
             <div class="button-group">
-            <a class="btn btn-primary btn-md">Sign in</a>
+            <a class="btn btn-primary btn-md">Cancel</a>
             <button type="submit"
                      class="btn btn-primary btn-md"
-                     [disabled]='!productForm.valid'>Log in</button>
+                     [disabled]='!productForm.valid'>Create</button>
             </div>
         </form>
 </div>

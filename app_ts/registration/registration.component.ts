@@ -2,59 +2,52 @@ import {Component, OnInit} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {
      FormBuilder,
-     ControlGroup,
-     Control,
      Validators,
-     FORM_DIRECTIVES } from '@angular/common';
+     FormControl,
+     FormGroup, REACTIVE_FORM_DIRECTIVES 
+} from '@angular/forms';
 import{RegistrationContact} from './registration-contact'
-import{ContactServiceComponent} from '../service/contact.service'
+import{UserServiceComponent} from '../service/user.service'
 import {Http} from '@angular/http';
 import{RepeatPasswordValidator} from '../shared/repeat-password-validator'
 
 @Component({
     templateUrl:'app_ts/registration/registration.html',
 styleUrls:['src/css/signin.css'],
-directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES]
+directives: [ROUTER_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
     }
 )
  export class RegistrationFormComponent implements OnInit{
-        registerForm: ControlGroup;
-       private pageTitle: string = '';
-         passwordControl :Control;
+        private registerForm: FormGroup;
+        private pageTitle: string = '';
+        private passwordControl :FormControl;
         
-        formError: { [id: string]: string };
+        private formError: { [id: string]: string };
         private _validationMessages: { [id: string]: { [id: string]: string } };
-        errorMessage: string;
+        private errorMessage: string;
         
-        registerContact: RegistrationContact;
+        private registerContact: RegistrationContact;
         
         constructor(private _fb: FormBuilder,
-                    private _contactService:ContactServiceComponent){
+                    private _contactService:UserServiceComponent){
             this.formError = {
             'email': '',
             'password': '',
             'repeat_password':''
         };
-        // console.log('from constructor');
         this.pageTitle = 'hello Vova';
-        this.print();
-        //  console.log(this.pageTitle);
         this.registerContact = new RegistrationContact();
         
-       this.passwordControl = new Control(this.registerContact.password,
-                    Validators.compose([Validators.required, Validators.minLength(8)]));
-        
         this.registerForm = _fb.group({
-            email: new Control(this.registerContact.email,
+            'email': new FormControl(this.registerContact.email,
                     Validators.compose([Validators.required, Validators.minLength(4)])),
-            password: this.passwordControl,
-             repeat_password: new Control(this.registerContact.repeat_password,
+            'password': new FormControl(this.registerContact.password,
+                    Validators.compose([Validators.required, Validators.minLength(8)])),
+             'repeat_password': new FormControl(this.registerContact.repeat_password,
                     Validators.compose([Validators.required]))},
                    {validator: matchingPasswords('password','repeat_password')});
-                    // Validators.required, Validators.minLength(8),
+                   
 
-        
-        
         this._validationMessages = {
             'email': {
                 'required': 'email is required',
@@ -73,7 +66,8 @@ directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES]
         };
         
          this.registerForm.valueChanges
-                .debounceTime(200)
+                .debounceTime(300)
+                // .distinctUntilChanged()
                 .subscribe(data => this.onValueChanged(data));
     }  
     /**
@@ -91,10 +85,7 @@ directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES]
                  
                     for (let key in this.registerForm.controls[field].errors) {
                            if(field=='repeat_password'){
-                        // console.log('repat_error:'+key)
                     }
-                     console.log('repat_error:'+key)
-
                         if (this.registerForm.controls[field].errors.hasOwnProperty(key)) {
                             this.formError[field] += this._validationMessages[field][key] + ' ';
                         }
@@ -102,7 +93,6 @@ directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES]
                 }
             }
         }
-        console.log('repat_error:'+this.registerForm.hasError('notequal'));
 
         if(this.registerForm.hasError('notequal')&&this.registerForm.controls['repeat_password'].value!==''){
             this.formError['repeat_password']=this._validationMessages['repeat_password']['notequal'];
@@ -110,10 +100,8 @@ directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES]
     }
     
     
-    
     ngOnInit(): any{
-        // this.newContact = new ContactComponent();
-        this.passwordControl = new Control(this.registerContact.password,
+        this.passwordControl = new FormControl(this.registerContact.password,
                     Validators.compose([Validators.required, Validators.minLength(8)]));
     }
     
@@ -124,41 +112,14 @@ directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES]
             console.log('loginForm have been send');
         });
     } 
-    
-    
-    // function checkRepeatPassword(control:Control, source:string):{[s:string]:boolean}{
-        
-    //     if(control.value!=source){
-    //         return {'invalid confirm password':true};
-    //     }
-    // }  
-    doCheckRepeatPassword(control:Control){
-        console.log('before print');
-           console.log('after print');
-        console.log('from doCheckRepeatPassword:');
-        return checkRepeatPassword(control,'');
-    }
-    
-    print(){
-        console.log('from doCheckRepeatPassword:');
-    }
 }
-function checkRepeatPassword(control:Control, source:string):{[s:string]:boolean}{
-        
-        if(control.value!=source){
-            // this.formError['repeat_password']=+'invalid confirm password';
-            return {'notequal':true};
-            
-        }
-    } 
 
     function matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
-  return (group: ControlGroup): {[key: string]: any} => {
+  return (group: FormGroup): {[key: string]: any} => {
     let password = group.controls[passwordKey];
     let confirmPassword = group.controls[confirmPasswordKey];
     console.log('password:'+password.value+', repeat_password:'+confirmPassword.value)
     if (password.value !== confirmPassword.value) {
-        console.log('Error!')
       return {
         'notequal': true
       };

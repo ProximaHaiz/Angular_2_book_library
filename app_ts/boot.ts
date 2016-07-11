@@ -2,7 +2,11 @@ import {bootstrap} from '@angular/platform-browser-dynamic';
 import {AppComponent} from "./app.component";
 import {HTTP_PROVIDERS} from "@angular/http";
 import { APP_ROUTER_PROVIDERS } from './app.routes';
-import{ContactServiceComponent} from './service/contact.service';
+import { disableDeprecatedForms, provideForms} from '@angular/forms';
+import{ProductServiceComponent} from './service/product.service';
+import{CategoryServiceComponent} from './service/category.service';
+import{UserServiceComponent} from './service/user.service';
+
 import{DataHandlerService} from './service/data-handler.service';
 import 'rxjs/Rx';
 
@@ -12,7 +16,11 @@ import 'rxjs/Rx';
 bootstrap(AppComponent, [
                          HTTP_PROVIDERS,
                          APP_ROUTER_PROVIDERS,
-                         ContactServiceComponent,
-                         DataHandlerService
+                         DataHandlerService,
+                         disableDeprecatedForms(),
+                         provideForms(),
+                         ProductServiceComponent,
+                         CategoryServiceComponent,
+                         UserServiceComponent
                          ])
     .catch(err => console.error(err));

@@ -1,24 +1,27 @@
 import {Component, OnInit} from '@angular/core';
 import { ROUTER_DIRECTIVES} from '@angular/router';
-import {Control} from '@angular/common';
-import{ContactServiceComponent} from '../service/contact.service';
+import {
+     FormControl,
+     FormGroup, REACTIVE_FORM_DIRECTIVES 
+} from '@angular/forms';
+import{ProductServiceComponent} from '../service/product.service';
 import{DataHandlerService} from '../service/data-handler.service';
 import {Subject} from "rxjs/Subject";
 
 @Component({
     selector:'nav-bar',
     templateUrl:'app_ts/navbar/navbar.html',
-    directives: [ROUTER_DIRECTIVES],
+    directives: [ROUTER_DIRECTIVES,REACTIVE_FORM_DIRECTIVES],
 })
 
 export class NavBarComponent implements OnInit{
-    private searchField = new Control();
+    private searchField = new FormControl();
     private search:string;
     private searchStream = new Subject<string>();
     private errorMessage: string;
     
-    constructor(private _contactService:ContactServiceComponent,
-                  private _dataHandlerService: DataHandlerService){}
+    constructor(private _contactService:ProductServiceComponent,
+                private _dataHandlerService: DataHandlerService){}
     
     
  ngOnInit(): any{

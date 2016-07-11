@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {IContent} from '../../content/content-element';
-import {ContactServiceComponent} from '../../service/contact.service';
+import {ProductServiceComponent} from '../../service/product.service';
 
 @Component({
     selector:'carousel',
@@ -13,7 +13,7 @@ import {ContactServiceComponent} from '../../service/contact.service';
 export class CarouselComponent implements OnInit{
    content: IContent [];
    
-   constructor(private _contactService:ContactServiceComponent){}
+   constructor(private _contactService:ProductServiceComponent){}
    getRandomContent(){}
    
    ngOnInit(){}

@@ -2,12 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {
      FormBuilder,
-     ControlGroup,
-     Control,
      Validators,
-     FORM_DIRECTIVES } from '@angular/common';
+     FormControl,
+     FormGroup, REACTIVE_FORM_DIRECTIVES 
+} from '@angular/forms';
 import{ContactComponent} from './contact'
-import{ContactServiceComponent} from '../service/contact.service';
+import{UserServiceComponent} from '../service/user.service';
 import{DataHandlerService} from '../service/data-handler.service';
 import {TestComponent} from './login-test.component';
 import {Subject} from "rxjs/Subject";
@@ -15,53 +15,41 @@ import {Subject} from "rxjs/Subject";
 @Component({
     templateUrl:'app_ts/login/login.html',
     styleUrls:['src/css/signin.css'],
-directives: [ROUTER_DIRECTIVES,FORM_DIRECTIVES,TestComponent]
+directives: [ROUTER_DIRECTIVES,TestComponent,REACTIVE_FORM_DIRECTIVES]
     }
 )
  export class LoginFormComponent implements OnInit{
-        loginForm: ControlGroup;
-        public pageTitle: string;
-        term = new Control();
-        search:string;
-        errorMessage: string;
+        public loginForm: FormGroup ;
+        private pageTitle: string;
+        private search:string;
+        private errorMessage: string;
         private searchStream = new Subject<string>();
+        private newContact: ContactComponent;
 
-           ngOnInit(): any{
-                this.searchStream
-                    .debounceTime(300)
-                    .distinctUntilChanged()
-                    .switchMap(term => this._dataHandlerService.changeNav(term))
-                    .subscribe(
-                        content => '',
-                        error => this.errorMessage = <any>error
-                    )
-            }
-        updateValue(){
-              this.searchStream.next(this.term.value); 
-        }
-
-        formError: { [id: string]: string };
+        private formError: { [id: string]: string };
         private _validationMessages: { [id: string]: { [id: string]: string } };
-        
-        
-        newContact: ContactComponent;
-        
+
+           ngOnInit(){
+                console.log('Login OnInit');
+                   
+            }
+
         constructor(private _fb: FormBuilder,
-                    private _contactService:ContactServiceComponent,
+                    private _contactService:UserServiceComponent,
                     private _dataHandlerService: DataHandlerService){
+            console.log('Login constructor');  
+             this.newContact = new ContactComponent();
+            this.loginForm = this._fb.group({
+            'username': 
+            new FormControl(this.newContact.username,Validators.compose([Validators.required, Validators.minLength(4)])),
+            'password':new FormControl(this.newContact.password,
+             Validators.compose([Validators.required, Validators.minLength(6)]))
+        });
             this.formError = {
             'username': '',
             'password': ''
         };
-        this.newContact = new ContactComponent();
-        
-        this.loginForm = _fb.group({
-            username: new Control(this.newContact.username,
-            Validators.compose([Validators.required, Validators.minLength(4)])),
-            password:new Control(this.newContact.password,
-             Validators.compose([Validators.required, Validators.minLength(6)]))
-        });
-        
+
         this._validationMessages = {
             'username': {
                 'required': 'Username is required',
