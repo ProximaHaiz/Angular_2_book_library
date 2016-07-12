@@ -30,6 +30,5 @@ import {NavBarComponent} from './navbar/nav-bar.component'
 })
 
 export class AppComponent {
-   listFilter: string = '';
    constructor(){}               
 }

@@ -24,7 +24,7 @@ export class AddNewProduct implements OnInit{
         private _fb: FormBuilder,
         private _router: Router,
         private _route: ActivatedRoute,
-        private _contactService: ProductServiceComponent){
+        private _productService: ProductServiceComponent){
             this.product = new IContent();
             this.productForm = _fb.group({
             productName: new FormControl(this.product.name, Validators.required),
@@ -47,6 +47,10 @@ export class AddNewProduct implements OnInit{
      } 
      submit(){
         console.log(this.productForm.value);
+        this._productService.createNewProduct(this.productForm.value)
+        .subscribe(data => {
+            console.log('product created: '+data)
+        })
         // this._contactService.loginUser(this.productForm.value)
         // .subscribe(data =>{
         //     console.log('loginForm have been send');

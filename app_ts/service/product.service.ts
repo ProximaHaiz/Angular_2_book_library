@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, URLSearchParams } from '@angular/http';
+import { Http, Response, Headers, URLSearchParams, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import {ContactComponent} from '../login/contact';
 import {Categories} from '../content/categories/categories.component';
@@ -57,8 +57,10 @@ export class ProductServiceComponent extends AbstractService{
 
   createNewProduct(product: IContent){
             const loginUrl = API_URL+'createProduct';
+            let headers = new Headers({ 'Content-Type': 'application/json' });
+            let options = new RequestOptions({ headers: headers });
             console.log('Product created:'+ product);
-            return this._http.post(loginUrl,JSON.stringify(product))
+            return this._http.post(loginUrl,JSON.stringify(product),options)
             .map(res => res.json())
             .catch(this._handleError);
   }

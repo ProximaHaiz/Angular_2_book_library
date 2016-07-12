@@ -23,6 +23,7 @@ directives: [ROUTER_DIRECTIVES,TestComponent,REACTIVE_FORM_DIRECTIVES]
         private pageTitle: string;
         private search:string;
         private errorMessage: string;
+        private loginError: string="";
         private searchStream = new Subject<string>();
         private newContact: ContactComponent;
 
@@ -72,6 +73,9 @@ directives: [ROUTER_DIRECTIVES,TestComponent,REACTIVE_FORM_DIRECTIVES]
      * formError binding with current 'field'
      */
     onValueChanged(data: any) {
+        if(this.loginError!==""){
+            this.loginError="";
+        }
         for (let field in this.formError) {
             if (this.formError.hasOwnProperty(field)) {
                 let hasError = this.loginForm.controls[field].dirty &&
@@ -93,6 +97,11 @@ directives: [ROUTER_DIRECTIVES,TestComponent,REACTIVE_FORM_DIRECTIVES]
         this._contactService.loginUser(this.loginForm.value)
         .subscribe(data =>{
             console.log('loginForm have been send');
+            this.loginError = "";
+        },
+        error =>{
+            this.loginError = error;
+            console.log('login error: '+error)
         });
     }   
 }
